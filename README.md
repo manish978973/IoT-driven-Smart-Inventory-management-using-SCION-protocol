@@ -27,7 +27,7 @@
 
 
 <div>
-  <h><b>CONFIGURING SCION CLIENT AND SERVER</b></h>
+  <h5><b>CONFIGURING SCION CLIENT AND SERVER</b></h5>
   <div>
 
 
