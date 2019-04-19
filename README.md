@@ -3,5 +3,5 @@
 
 <div>
 <h2 align="center">BLOCK DIAGRAM OF THE IOT SETUP </h2>
-<Image src="Images/Blockdgm.png" align="center" >
+<Image src="Images/Blockdgm.png" position="center" >
 </div>
