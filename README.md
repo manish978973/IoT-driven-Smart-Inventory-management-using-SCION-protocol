@@ -28,6 +28,24 @@
 
 <div>
   <h5><font size="6">CONFIGURING SCION CLIENT AND SERVER</font></h5>
+  <p>
+  <ul>
+    <li>CONFIGURING SCION SERVER <p>
+      •	Act as a TCP Socket client and fetch UID values from Python TCP socket server whenever the card is swiped with RFID sensor. 
+•	Fetch appropriate weight values from load cell [4]-HX711 [5] sensor.
+•	The product data like name, expiry date, capacity and so on are also hard coded for each UID in the SCION [1]  server go script.
+•	Amalgamate product data associated with respective UID and their corresponding weight as one compact JSON object and send it to requesting client SCION [1] AS node.
+
+This script upon execution produces a JSON object with product UID, product data and the respective real time weight readings at the SCION [1] client AS node. The script is executed by running the below command as shown.
+
+•	“go run weight_server_full.go -s 19-ffaa:1:161,[192.168.137.185]:30102” 
+
+Where “30102” indicates the port number, “[192.168.137.185]” is the detected dynamic IP of the Raspberry Pi [2] and “19-ffaa:1:161” is the SCION [1] AS node installed on the Pi. The complete script can be found in the appendix section.
+
+      </p></li>
+  
+  </ul>
+  </p>
   <div>
 
 
