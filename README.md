@@ -30,7 +30,7 @@
   <h5><font size="6">CONFIGURING SCION CLIENT AND SERVER</font></h5>
   <p>
   <ul>
-    <li>CONFIGURING SCION SERVER <p>
+    <li><u>CONFIGURING SCION SERVER</u> <p>
       •	Act as a TCP Socket client and fetch UID values from Python TCP socket server whenever the card is swiped with RFID sensor. 
 •	Fetch appropriate weight values from load cell [4]-HX711 [5] sensor.
 •	The product data like name, expiry date, capacity and so on are also hard coded for each UID in the SCION [1]  server go script.
@@ -42,7 +42,17 @@ This script upon execution produces a JSON object with product UID, product data
 
 Where “30102” indicates the port number, “[192.168.137.185]” is the detected dynamic IP of the Raspberry Pi [2] and “19-ffaa:1:161” is the SCION [1] AS node installed on the Pi. The complete script can be found in the appendix section.
 
-      </p></li>
+ </p></li>
+  
+  <li>
+  <u>CONFIGURING SCION CLIENT</u>
+  <p>This chapter discusses the slight modification in the SCION [1] client go script to receive the JSON object encapsulating product data, weight values and UID from the hosted SCION [1] server AS node. Apart from that, the script also performs the hosting of a Hyper Text Transfer Protocol (HTTP) socket which is utilized for exposing the JSON object over a HTTP connection so that the visualization tool Node-Red [6] can use a http get request to access the JSON object and then visualize the same. The script is executed by running the below command as shown.
+
+•	“go run Scion_client.go -c 19-ffaa:1:bfa,[192.168.1.130]:30102 -s 19-ffaa:1:161,[192.168.137.185]:30102 ” 
+
+Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the SCION [1] client AS node, “[192.168.1.130]” indicates the client IP address(Personal Computer), “19-ffaa:1:161” indicates the SCION [1] server AS node and “[192.168.137.185]” indicates the server IP address(Raspberry Pi [2]). The complete script can be found in the appendix section.
+</p>
+  </li>
   
   </ul>
   </p>
