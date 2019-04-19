@@ -24,8 +24,10 @@
   </li>
 </ul>
 </div>
+
+
 <div>
-  <h>CONFIGURING SCION CLIENT AND SERVER</h>
+  <h><b>CONFIGURING SCION CLIENT AND SERVER</b></h>
   <div>
 
 
