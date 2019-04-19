@@ -56,8 +56,13 @@ Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the S
   
   </ul>
   </p>
-  </div>
+</div>
 
+
+<div>
+  <h><b>IMPLEMENTATION OF NODE_RED</b> </h>
+  <Image src="" alt="Nodes">
+</div>
 
 
 
