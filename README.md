@@ -68,8 +68,9 @@ Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the S
 <div><h align="center"><b>HARDWARE IMPLEMENTATION AND DATA VISUALIZATION USING NODE-RED</b></h>
    <br>
   <br>
+    <Image src="Images/hardwaresetup.jpg" alt="Nodes" height="300px" width="400px">
    <Image src="Images/visualize.jpg" alt="Nodes" height="300px" width="400px">
-      <Image src="Images/hardwaresetup.jpg" alt="Nodes" height="300px" width="400px">
+    
   </div>
 
 
