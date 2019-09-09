@@ -55,9 +55,9 @@ network from the Raspberry Pi [2].`
 
 
 
-
+ ### CONFIGURING SCION CLIENT AND SERVER
 <div>
-  <h5><font size="6">CONFIGURING SCION CLIENT AND SERVER</font></h5>
+
   <p>
   <ul>
     <li><u>CONFIGURING SCION SERVER</u> <p>
