@@ -55,6 +55,7 @@ network from the Raspberry Pi [2].`
 ### INTERFACING LOAD CELL, HX711 AMPLIFIER AND MFRC522 READER WITH PI
 
 The HX711 [5] weight amplifier is interfaced with the load cell [4] using it’s following connections
+
 • Excitation (E+) or VCC is red
 
 • Excitation (E-) or ground is black
