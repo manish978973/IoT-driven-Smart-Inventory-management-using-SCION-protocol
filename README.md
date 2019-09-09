@@ -64,6 +64,7 @@ The HX711 [5] weight amplifier is interfaced with the load cell [4] using it’s
 • Output (A-) is green
 
 This load cell HX711 [5] integrated sensor unit is then interfaced with the Raspberry Pi serially as follows:
+
 • Vcc of HX711 to Pin 2 (5V)
 
 • GND to Pin 6 (GND)
