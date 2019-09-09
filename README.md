@@ -150,7 +150,7 @@ name, product expiry date, current time, unit weight, capacity, current number a
 
 
 <div align="center>
-  <h><b>IMPLEMENTATION OF GUI : NODE_RED</b> </h>
+  <h><b>IMPLEMENTATION OF GUI </b> </h>
   <br>
   <Image src="Images/noderednode.jpg" alt="Nodes" height="400px" width="600px">
 </div>
