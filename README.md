@@ -160,12 +160,16 @@ Once installed follow up the steps:
 
 ![alt text](https://github.com/manish978973/SCION_IOT/blob/master/Images/noderednode.jpg "Logo Title Text 1")
 
-* A “http” input type node is used to access the JSON object (data packet) hosted on a HTTP server at port 4000.
-The node is configured accordingly to use a GET method at the Uniform Resource Locator (URL) (port 4000). The
-JSON object is received as a message payload at the NodeRed [6] end.
-* 
+* A “http” input type node is used to access the JSON object (data packet) hosted on a HTTP server at port 4000.The node is configured accordingly to use a GET method at the Uniform Resource Locator (URL) (port 4000). The JSON object is received as a message payload at the NodeRed [6] end.
+* Several change type nodes are used to parse several data information from the entire message payload (JSONobject). Change type nodes are used to process and parse the temperature, humidity, product name, expiry date, capacity, current number, weight information from the message payload. 
+* Several dashboard nodes like “text”, “gauge”, “chart” are used to visualize all these parsed separate information as a gauge, wave, level default text types of visualization.
 
+Node-Red acts as a Graphical User Interface for the users so that they can monitor the inventory status of products in real
+time which eliminates the need to do frequent physical inventory inspection and take business decisions accordingly. This also facilitates the users to take business decisions either to replenish the decreasing stock or to grant discounts in real time. 
 
+## RESULTS
+
+* Rigid assembly with the appropriate placement of the load cell [4], RFID reader module and the Raspberry Pi [2] to form a stand-alone “smart pallet” unit. The assembly comprises of a mounting plate which acts as the platform for keeping the RFID tag attached product pallet and a placeholder unit which contains the RFID, load cell [4] connected Raspberry Pi[2].
 
 <div><h align="center"><b>HARDWARE IMPLEMENTATION AND DATA VISUALIZATION USING NODE-RED</b></h>
    <br>
