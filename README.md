@@ -52,6 +52,26 @@ The scion server should be automatically started , else it can be started manual
 `Instead of command prompt, Putty has been used to connect with the Raspberry Pi and then to run and host the SCION [1]
 network from the Raspberry Pi [2].`
 
+### INTERFACING LOAD CELL, HX711 AMPLIFIER AND MFRC522 READER WITH PI
+
+The HX711 [5] weight amplifier is interfaced with the load cell [4] using it’s following connections
+• Excitation (E+) or VCC is red
+• Excitation (E-) or ground is black
+• Output (A+) is white
+• Output (A-) is green
+
+This load cell HX711 [5] integrated sensor unit is then interfaced with the Raspberry Pi serially as follows:
+• Vcc of HX711 to Pin 2 (5V)
+• GND to Pin 6 (GND)
+• DT to Pin 29 (GPIO 5)
+• SCK to Pin 31 (GPIO 6)
+
+This sensor unit comprising of load cell [4] and HX711 [5] amplifier needs to be tested and calibrated accordingly to
+ensure accurate weight readings after which real time weight data is acquired. Run the following command to calibrate the load cell after placing 2 objects of known weights.
+
+                                            `go run calibrate.go`
+                                            
+When asked, put the first weight on the scale. Then when asked, put the second weight on the scale. It will print out the AdjustZero and AdjustScale values. These values are updated in the main code **weight_server_full_rv2.go**
 
 
 
