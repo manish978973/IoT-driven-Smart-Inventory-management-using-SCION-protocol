@@ -88,11 +88,11 @@ response. There are 8 hardware connections for RFID sensor with the Raspberry Pi
 By default the Pi has the SPI (Serial Peripheral Interface) disabled, which is a prerequisite for the RFID reader
 to function and therefore, needs to be enabled using rasp iconfig tool as follows:
 
-• Run the command “sudo raspi-config”
+• Run the command `sudo raspi-config`
 • Select “Interfacing options”
 • Select “P4 SPI” and then, select “Yes”
 • Run the command “sudo reboot” to reboot the Pi
-• Run the command ““lsmod | grep spi” to check.
+• Run the command `lsmod | grep spi` to check.
 • And ensure if spi_bcm2835 is listed.
 
 
