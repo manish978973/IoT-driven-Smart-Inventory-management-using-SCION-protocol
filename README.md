@@ -104,15 +104,18 @@ to function and therefore, needs to be enabled using rasp iconfig tool as follow
   <ul>
     <li><u>CONFIGURING SCION SERVER</u> <p>
       •	Act as a TCP Socket client and fetch UID values from Python TCP socket server whenever the card is swiped with RFID sensor. 
+      
+      Run the command python RFID_TH_SERVER.py to start the Python TCP socket server and fetch values from RFID to the server side.
+      
 •	Fetch appropriate weight values from load cell [4]-HX711 [5] sensor.
-•	The product data like name, expiry date, capacity and so on are also hard coded for each UID in the SCION [1]  server go script.
+•	The product data like name, expiry date, capacity and so on are also hard coded for each UID from RFID in the SCION [1]  server go script.
 •	Amalgamate product data associated with respective UID and their corresponding weight as one compact JSON object and send it to requesting client SCION [1] AS node.
 
 This script upon execution produces a JSON object with product UID, product data and the respective real time weight readings at the SCION [1] client AS node. The script is executed by running the below command as shown.
 
 •	“go run weight_server_full_rv2.go -s 19-ffaa:1:161,[192.168.137.185]:30102” 
 
-Where “30102” indicates the port number, “[192.168.137.185]” is the detected dynamic IP of the Raspberry Pi [2] and “19-ffaa:1:161” is the SCION [1] AS node installed on the Pi. The complete script can be found in the appendix section.
+Where “30102” indicates the port number, “[192.168.137.185]” is the detected dynamic IP of the Raspberry Pi [2] and “19-ffaa:1:161” is the SCION [1] AS node installed on the Pi. 
 
  </p></li>
   
@@ -120,9 +123,9 @@ Where “30102” indicates the port number, “[192.168.137.185]” is the dete
   <u>CONFIGURING SCION CLIENT</u>
   <p>This chapter discusses the slight modification in the SCION [1] client go script to receive the JSON object encapsulating product data, weight values and UID from the hosted SCION [1] server AS node. Apart from that, the script also performs the hosting of a Hyper Text Transfer Protocol (HTTP) socket which is utilized for exposing the JSON object over a HTTP connection so that the visualization tool Node-Red [6] can use a http get request to access the JSON object and then visualize the same. The script is executed by running the below command as shown.
 
-•	“go run Scion_client.go -c 19-ffaa:1:bfa,[192.168.1.130]:30102 -s 19-ffaa:1:161,[192.168.137.185]:30102 ” 
+•	“go run weight_client_retry.go -c 19-ffaa:1:bfa,[192.168.1.130]:30102 -s 19-ffaa:1:161,[192.168.137.185]:30102 ” 
 
-Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the SCION [1] client AS node, “[192.168.1.130]” indicates the client IP address(Personal Computer), “19-ffaa:1:161” indicates the SCION [1] server AS node and “[192.168.137.185]” indicates the server IP address(Raspberry Pi [2]). The complete script can be found in the appendix section.
+Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the SCION [1] client AS node, “[192.168.1.130]” indicates the client IP address(Personal Computer), “19-ffaa:1:161” indicates the SCION [1] server AS node and “[192.168.137.185]” indicates the server IP address(Raspberry Pi [2]). 
 </p>
   </li>
   
@@ -130,9 +133,24 @@ Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the S
   </p>
 </div>
 
+### CLIENT SERVER COMMUNICATION FLOW
+
+* The Raspberry Pi [2] initiates the RFID reader to read the UID of the scanned RFID tag if detected.
+* The Raspberry Pi [2] hosts a TCP socket server bound to a specific port. The data packet containing the UID is converted to JSON format and then send as bytes to this TCP connection and starts listening for any incoming request. Whenever this TCP server receives a request, it responds with this data packet.
+* Then, the Raspberry Pi [2] runs and connects to the SCION [1] network as a SCION [1] AS server node by
+identifying the SCION [1] server address, scion path and dispatcher path. Once identified, the SCION [1] server starts listening over a UDP connection for any incoming requests. Then a TCP connection is established with that
+specifc port by the SCION [1] server and the HX711 [5] sensor is also initialized. Whenever any incoming request is encountered from the SCION [1] AS client node, it sends a sample data packet as request to the TCP socket over a TCP connection. It gets back the UID as the TCP response from the TCP server. 
+* If the UID obtained is a valid existing one, then the real time weight reading from the HX711[5]-load cell [4] unit is fetched and then appended to the data packet.Moreover the UID, current number, current time are also appended to the data packet which is then converted into JSON format.
+* This data packet is then sent to the respective client SCION[1] AS node over the SCION [1] network.
+* The client SCION [1] AS node now receives the data packet as a JSON object encapsulating the UID, product
+name, product expiry date, current time, unit weight, capacity, current number and weight.
+* The client SCION [1] AS hosts a HTTP socket on a specific port and establish a HTTP connection and starts listening. Then, it exposes this data packet as JSON object over this defined port. Whenever, this HTTP server encounters a request from any browser or user, it sends with this JSON object as response.
+• The visualization tool, Node-Red [6] dashboard makes a HTTP GET request to this defined port, and gets this JSON object as response which is then processed, parsed and displayed using several node functions available in the Node-Red [6].
+
+
 
 <div align="center>
-  <h><b>IMPLEMENTATION OF NODE_RED</b> </h>
+  <h><b>IMPLEMENTATION OF GUI : NODE_RED</b> </h>
   <br>
   <Image src="Images/noderednode.jpg" alt="Nodes" height="400px" width="600px">
 </div>
