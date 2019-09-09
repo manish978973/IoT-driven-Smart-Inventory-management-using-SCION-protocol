@@ -25,7 +25,7 @@
 </ul>
 </div>
 
-## INSTALLATION OF SCION IN VIRTUAL MACHINE AND RASPBERRY PI
+### INSTALLATION OF SCION IN VIRTUAL MACHINE AND RASPBERRY PI
 
 * A new SCION [1] Lab AS is generated with the a unique id is generated.
 * The Virtual machine(VM) configuration file of this generated AS node is then downloaded. 
@@ -34,6 +34,7 @@
 * Following this the vagrant is started and we navigate to the path where SCION AS is installed.
 
 `$ cd $SC`
+
 The scion server should be automatically started , else it can be started manually with the following command.
 
 `$ ./scion.sh start`
@@ -41,7 +42,7 @@ The scion server should be automatically started , else it can be started manual
 * The `$ tail -f $SC/logs/bs*.DEBUG` command can be executed to check if the SCION server is working fine and we are able to receive the beacons.
 * A similar procedure can be repeated in Raspberry pi to get SCION installed on top of Ubuntu Mate on Raspberry Pi 3B+.
 
-## INSTALLATION OF UBUNTU MATE IN RASPBERRY PI
+### INSTALLATION OF UBUNTU MATE IN RASPBERRY PI
 
 * Download a copy of Raspbian OS for Pi 3B+ and Ubuntu MATE for raspberry Pi 3B.
 * Copy and then replace the following files from Raspbian [10] OS to Ubuntu MATE: bootcode.bin,fixup.dat, start.elf, bcm270-rpi-3-b-plus.dtb,kernel17.img, all contents from /lib/modules/4.9.80-v7+ and /lib/firmware/brcm/
