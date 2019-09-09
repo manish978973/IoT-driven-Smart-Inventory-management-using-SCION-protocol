@@ -6,7 +6,7 @@
 <Image src="Images/Blockdgm.png" class="center" style="width:50%">
 </div>
 
-<div><h3>HARDWARE DEVICE SPECIFICATIONS</h3>
+<div><h3>HARDWARE AND SOFTWARE SPECIFICATIONS</h3>
 <ul>
   <li>Raspberry 3B+ <p>The application uses Raspberry Pi [2] as the micro-controller unit and around two Raspberry Pi [2] has been used upon which two separate SCION [1] AS nodes are installed respectively, one acts as the server interfaced with the RFID module and load [4] cell and the other acts as the client interfaced with the LCD unit where the weight data is being displayed (not within the scope of this report).</p></li>  
   
