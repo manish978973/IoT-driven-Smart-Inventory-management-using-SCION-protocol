@@ -149,11 +149,23 @@ name, product expiry date, current time, unit weight, capacity, current number a
 
 
 
-<div align="center>
-  <h><b>IMPLEMENTATION OF GUI </b> </h>
-  <br>
-  <Image src="Images/noderednode.jpg" alt="Nodes" height="400px" width="600px">
-</div>
+### IMPLEMNETATION OF GUI : NODE RED
+
+The flowbased, visual programming development tool, Node-Red [6]has been employed for this purpose.[Node-RED](https://nodered.org).
+is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.
+
+Node-Red can be installed in Windows, Linux and Raspberry Pi. Please refer the [installation procedure](https://nodered.org/docs/getting-started/windows)for getting started with Node-Red.
+
+Once installed follow up the steps: 
+
+![alt text](https://github.com/manish978973/SCION_IOT/blob/master/Images/noderednode.jpg "Logo Title Text 1")
+
+* A “http” input type node is used to access the JSON object (data packet) hosted on a HTTP server at port 4000.
+The node is configured accordingly to use a GET method at the Uniform Resource Locator (URL) (port 4000). The
+JSON object is received as a message payload at the NodeRed [6] end.
+* 
+
+
 
 <div><h align="center"><b>HARDWARE IMPLEMENTATION AND DATA VISUALIZATION USING NODE-RED</b></h>
    <br>
