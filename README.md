@@ -33,11 +33,11 @@
 * Following this the downloaded file is extracted and the virtual environment for SCION is set using Virtual Box and vagrant.
 * Following this the vagrant is started and we navigate to the path where SCION AS is installed.
 
-           `$ cd $SC`
+           $ cd $SC
 
 The scion server should be automatically started , else it can be started manually with the following command.
 
-           `$ ./scion.sh start`
+           $ ./scion.sh start
 
 * The `$ tail -f $SC/logs/bs*.DEBUG` command can be executed to check if the SCION server is working fine and we are able to receive the beacons.
 * A similar procedure can be repeated in Raspberry pi to get SCION installed on top of Ubuntu Mate on Raspberry Pi 3B+.
