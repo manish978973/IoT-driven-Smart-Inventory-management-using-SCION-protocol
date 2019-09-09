@@ -56,14 +56,20 @@ network from the Raspberry Pi [2].`
 
 The HX711 [5] weight amplifier is interfaced with the load cell [4] using it’s following connections
 • Excitation (E+) or VCC is red
+
 • Excitation (E-) or ground is black
+
 • Output (A+) is white
+
 • Output (A-) is green
 
 This load cell HX711 [5] integrated sensor unit is then interfaced with the Raspberry Pi serially as follows:
 • Vcc of HX711 to Pin 2 (5V)
+
 • GND to Pin 6 (GND)
+
 • DT to Pin 29 (GPIO 5)
+
 • SCK to Pin 31 (GPIO 6)
 
 This sensor unit comprising of load cell [4] and HX711 [5] amplifier needs to be tested and calibrated accordingly to
@@ -78,21 +84,32 @@ chain as the RFID tag. Each tag is associated with a unique id.The RFID reader s
 response. There are 8 hardware connections for RFID sensor with the Raspberry Pi [2] as follows:
 
 • SDA connects to Pin 24
+
 • SCK connects to Pin 23
+
 • MOSI connects to Pin 19
+
 • MISO connects to Pin 21
+
 • GND connects to Pin 6
+
 • RST connects to Pin 22
+
 • 3.3v connects to Pin 1 
 
 By default the Pi has the SPI (Serial Peripheral Interface) disabled, which is a prerequisite for the RFID reader
 to function and therefore, needs to be enabled using rasp iconfig tool as follows:
 
 • Run the command `sudo raspi-config`
+
 • Select “Interfacing options”
+
 • Select “P4 SPI” and then, select “Yes”
+
 • Run the command “sudo reboot” to reboot the Pi
+
 • Run the command `lsmod | grep spi` to check.
+
 • And ensure if spi_bcm2835 is listed.
 
 
@@ -108,12 +125,14 @@ to function and therefore, needs to be enabled using rasp iconfig tool as follow
       Run the command python RFID_TH_SERVER.py to start the Python TCP socket server and fetch values from RFID to the server side.
       
 •	Fetch appropriate weight values from load cell [4]-HX711 [5] sensor.
+
 •	The product data like name, expiry date, capacity and so on are also hard coded for each UID from RFID in the SCION [1]  server go script.
+
 •	Amalgamate product data associated with respective UID and their corresponding weight as one compact JSON object and send it to requesting client SCION [1] AS node.
 
 This script upon execution produces a JSON object with product UID, product data and the respective real time weight readings at the SCION [1] client AS node. The script is executed by running the below command as shown.
 
-•	“go run weight_server_full_rv2.go -s 19-ffaa:1:161,[192.168.137.185]:30102” 
+•		`go run weight_server_full_rv2.go -s 19-ffaa:1:161,[192.168.137.185]:30102` 
 
 Where “30102” indicates the port number, “[192.168.137.185]” is the detected dynamic IP of the Raspberry Pi [2] and “19-ffaa:1:161” is the SCION [1] AS node installed on the Pi. 
 
@@ -123,7 +142,7 @@ Where “30102” indicates the port number, “[192.168.137.185]” is the dete
   <u>CONFIGURING SCION CLIENT</u>
   <p>This chapter discusses the slight modification in the SCION [1] client go script to receive the JSON object encapsulating product data, weight values and UID from the hosted SCION [1] server AS node. Apart from that, the script also performs the hosting of a Hyper Text Transfer Protocol (HTTP) socket which is utilized for exposing the JSON object over a HTTP connection so that the visualization tool Node-Red [6] can use a http get request to access the JSON object and then visualize the same. The script is executed by running the below command as shown.
 
-•	“go run weight_client_retry.go -c 19-ffaa:1:bfa,[192.168.1.130]:30102 -s 19-ffaa:1:161,[192.168.137.185]:30102 ” 
+•	`go run weight_client_retry.go -c 19-ffaa:1:bfa,[192.168.1.130]:30102 -s 19-ffaa:1:161,[192.168.137.185]:30102`
 
 Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the SCION [1] client AS node, “[192.168.1.130]” indicates the client IP address(Personal Computer), “19-ffaa:1:161” indicates the SCION [1] server AS node and “[192.168.137.185]” indicates the server IP address(Raspberry Pi [2]). 
 </p>
@@ -136,16 +155,23 @@ Where “30102” indicates the port number,”19-ffaa:1:bfa,” indicates the S
 ### CLIENT SERVER COMMUNICATION FLOW
 
 * The Raspberry Pi [2] initiates the RFID reader to read the UID of the scanned RFID tag if detected.
-* The Raspberry Pi [2] hosts a TCP socket server bound to a specific port. The data packet containing the UID is converted to JSON format and then send as bytes to this TCP connection and starts listening for any incoming request. Whenever this TCP server receives a request, it responds with this data packet.
+
+* The Raspberry Pi [2] hosts a TCP socket server bound to a specific port. The data packet containing the UID is converted to JSON 
+format and then send as bytes to this TCP connection and starts listening for any incoming request. Whenever this TCP server receives a request, it responds with this data packet.
+
 * Then, the Raspberry Pi [2] runs and connects to the SCION [1] network as a SCION [1] AS server node by
-identifying the SCION [1] server address, scion path and dispatcher path. Once identified, the SCION [1] server starts listening over a UDP connection for any incoming requests. Then a TCP connection is established with that
-specifc port by the SCION [1] server and the HX711 [5] sensor is also initialized. Whenever any incoming request is encountered from the SCION [1] AS client node, it sends a sample data packet as request to the TCP socket over a TCP connection. It gets back the UID as the TCP response from the TCP server. 
+identifying the SCION [1] server address, scion path and dispatcher path. Once identified, the SCION [1] server starts listening over a UDP connection for any incoming requests. Then a TCP connection is established with that specifc port by the SCION [1] server and the HX711 [5] sensor is also initialized. Whenever any incoming request is encountered from the SCION [1] AS client node, it sends a sample data packet as request to the TCP socket over a TCP connection. It gets back the UID as the TCP response from the TCP server. 
+
 * If the UID obtained is a valid existing one, then the real time weight reading from the HX711[5]-load cell [4] unit is fetched and then appended to the data packet.Moreover the UID, current number, current time are also appended to the data packet which is then converted into JSON format.
+
 * This data packet is then sent to the respective client SCION[1] AS node over the SCION [1] network.
+
 * The client SCION [1] AS node now receives the data packet as a JSON object encapsulating the UID, product
 name, product expiry date, current time, unit weight, capacity, current number and weight.
+
 * The client SCION [1] AS hosts a HTTP socket on a specific port and establish a HTTP connection and starts listening. Then, it exposes this data packet as JSON object over this defined port. Whenever, this HTTP server encounters a request from any browser or user, it sends with this JSON object as response.
-• The visualization tool, Node-Red [6] dashboard makes a HTTP GET request to this defined port, and gets this JSON object as response which is then processed, parsed and displayed using several node functions available in the Node-Red [6].
+
+* The visualization tool, Node-Red [6] dashboard makes a HTTP GET request to this defined port, and gets this JSON object as response which is then processed, parsed and displayed using several node functions available in the Node-Red [6].
 
 
 
@@ -161,7 +187,9 @@ Once installed follow up the steps:
 ![alt text](https://github.com/manish978973/SCION_IOT/blob/master/Images/noderednode.jpg "Logo Title Text 1")
 
 * A “http” input type node is used to access the JSON object (data packet) hosted on a HTTP server at port 4000.The node is configured accordingly to use a GET method at the Uniform Resource Locator (URL) (port 4000). The JSON object is received as a message payload at the NodeRed [6] end.
+
 * Several change type nodes are used to parse several data information from the entire message payload (JSONobject). Change type nodes are used to process and parse the temperature, humidity, product name, expiry date, capacity, current number, weight information from the message payload. 
+
 * Several dashboard nodes like “text”, “gauge”, “chart” are used to visualize all these parsed separate information as a gauge, wave, level default text types of visualization.
 
 Node-Red acts as a Graphical User Interface for the users so that they can monitor the inventory status of products in real
