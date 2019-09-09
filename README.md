@@ -179,10 +179,26 @@ time which eliminates the need to do frequent physical inventory inspection and 
     
   </div>
 
+## CONCLUSION AND FURTHER WORK
 
+The application which we have realized is just an initial development and posses wide scope of developmental progress in several application contexts. This application can find it’s usage in wholesale, retail, manufacturing, warehouses and logistics domains wherever an inventory status and management of products are required on it’s further development like using load cell [4] of wide range. The application can extend it’s functionalities to automatic discount generation in real time, automatic order generation
+for stock replenishment in real time, monitor the sales data of the product which can further used for reconciliation with the
+point of sales report. 
 
+Another possible extension is to incorporate other sensors like temperature, humidity and pressure sensors which would make the use case more realistic and even applicable for monitoring and transportation of cold storage and fresh foodproducts where the real time temperature, pressure and humidity of the environment can be known and hence the temperature of the cold storage area can be remotely
+controlled and changed accordingly.
 
+## ABBRREVIATIONS
 
+| Form      | Definition           |
+| ------------- |:-------------:| 
+|SCION is      | Scalability, Control , And Isolation On Next Generation Networks | 
+|IoT is        | Internet of Things     |  
+|RFID is       | Radio Frequency Identification      |   
+|AS is         | Autonomous System               |      
+|GUI is       |Graphical User Interface    | 
+|SPI is       | Serial Peripheral Interface      | 
+|TCP is       | Transmission Control Protocol      | 
 
 
 
