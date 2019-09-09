@@ -192,13 +192,13 @@ controlled and changed accordingly.
 
 | Form      | Definition           |
 | ------------- |:-------------:| 
-|SCION is      | Scalability, Control , And Isolation On Next Generation Networks | 
-|IoT is        | Internet of Things     |  
-|RFID is       | Radio Frequency Identification      |   
-|AS is         | Autonomous System               |      
-|GUI is       |Graphical User Interface    | 
-|SPI is       | Serial Peripheral Interface      | 
-|TCP is       | Transmission Control Protocol      | 
+|SCION          |Scalability, Control , And Isolation On Next Generation Networks| 
+|IoT            |Internet of Things|  
+|RFID           |Radio Frequency Identification|   
+|AS             |Autonomous System|      
+|GUI            |Graphical User Interface| 
+|SPI            |Serial Peripheral Interface| 
+|TCP            |Transmission Control Protocol| 
 
 
 
