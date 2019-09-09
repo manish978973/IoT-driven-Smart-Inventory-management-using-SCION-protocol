@@ -69,7 +69,7 @@ This load cell HX711 [5] integrated sensor unit is then interfaced with the Rasp
 This sensor unit comprising of load cell [4] and HX711 [5] amplifier needs to be tested and calibrated accordingly to
 ensure accurate weight readings after which real time weight data is acquired. Run the following command to calibrate the load cell after placing 2 objects of known weights.
 
-                                            `go run calibrate.go`
+                                            go run calibrate.go
                                             
 When asked, put the first weight on the scale. Then when asked, put the second weight on the scale. It will print out the AdjustZero and AdjustScale values. These values are updated in the main code **weight_server_full_rv2.go**
 
