@@ -103,7 +103,7 @@ to function and therefore, needs to be enabled using rasp iconfig tool as follow
   <p>
   <ul>
     <li><u>CONFIGURING SCION SERVER</u> <p>
-      •	Scion server as a TCP Socket client and fetch UID values from Python TCP socket server whenever the card is swiped with RFID sensor. 
+      •	Scion server act as a TCP Socket client and fetch UID values from Python TCP socket server whenever the card is swiped with RFID sensor. 
       
       Run the command python RFID_TH_SERVER.py to start the Python TCP socket server and fetch values from RFID to the server side.
       
