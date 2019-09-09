@@ -177,7 +177,7 @@ name, product expiry date, current time, unit weight, capacity, current number a
 
 
 
-### IMPLEMNETATION OF GUI : NODE RED
+### IMPLEMENTATION OF GUI : NODE RED
 
 The flowbased, visual programming development tool, Node-Red [6]has been employed for this purpose.[Node-RED](https://nodered.org).
 is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.
@@ -197,7 +197,7 @@ Once installed follow up the steps:
 Node-Red acts as a Graphical User Interface for the users so that they can monitor the inventory status of products in real
 time which eliminates the need to do frequent physical inventory inspection and take business decisions accordingly. This also facilitates the users to take business decisions either to replenish the decreasing stock or to grant discounts in real time. 
 
-## RESULTS
+### RESULTS
 
 * Rigid assembly with the appropriate placement of the load cell [4], RFID reader module and the Raspberry Pi [2] to form a stand-alone “smart pallet” unit. The assembly comprises of a mounting plate which acts as the platform for keeping the RFID tag attached product pallet and a placeholder unit which contains the RFID, load cell [4] connected Raspberry Pi[2].
 
@@ -209,7 +209,7 @@ time which eliminates the need to do frequent physical inventory inspection and 
     
   </div>
 
-## CONCLUSION AND FURTHER WORK
+### CONCLUSION AND FURTHER WORK
 
 The application which we have realized is just an initial development and posses wide scope of developmental progress in several application contexts. This application can find it’s usage in wholesale, retail, manufacturing, warehouses and logistics domains wherever an inventory status and management of products are required on it’s further development like using load cell [4] of wide range. The application can extend it’s functionalities to automatic discount generation in real time, automatic order generation
 for stock replenishment in real time, monitor the sales data of the product which can further used for reconciliation with the
@@ -218,7 +218,7 @@ point of sales report.
 Another possible extension is to incorporate other sensors like temperature, humidity and pressure sensors which would make the use case more realistic and even applicable for monitoring and transportation of cold storage and fresh foodproducts where the real time temperature, pressure and humidity of the environment can be known and hence the temperature of the cold storage area can be remotely
 controlled and changed accordingly.
 
-## ABBRREVIATIONS
+### ABBRREVIATIONS
 
 | Form      | Definition           |
 | ------------- |:-------------:| 
