@@ -27,7 +27,7 @@
 
 
 <div>
-  <h5><font size="6">CONFIGURING SCION CLIENT AND SERVER</font></h5>
+      ## CONFIGURING SCION CLIENT AND SERVER
   <p>
   <ul>
     <li><u>CONFIGURING SCION SERVER</u> <p>
