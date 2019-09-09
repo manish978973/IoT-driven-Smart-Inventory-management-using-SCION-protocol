@@ -67,11 +67,33 @@ This load cell HX711 [5] integrated sensor unit is then interfaced with the Rasp
 • SCK to Pin 31 (GPIO 6)
 
 This sensor unit comprising of load cell [4] and HX711 [5] amplifier needs to be tested and calibrated accordingly to
-ensure accurate weight readings after which real time weight data is acquired. Run the following command to calibrate the load cell after placing 2 objects of known weights.
+ensure accurate weight readings after which real time weight data is acquired. Run the following command to **calibrate** the load cell after placing 2 objects of known weights.
 
                                             go run calibrate.go
                                             
 When asked, put the first weight on the scale. Then when asked, put the second weight on the scale. It will print out the AdjustZero and AdjustScale values. These values are updated in the main code **weight_server_full_rv2.go**
+
+RFID tags are attached to the product or pallet which is to be identified. The application primarily uses a card and a key
+chain as the RFID tag. Each tag is associated with a unique id.The RFID reader sends a signal to the tag and read it’s
+response. There are 8 hardware connections for RFID sensor with the Raspberry Pi [2] as follows:
+
+• SDA connects to Pin 24
+• SCK connects to Pin 23
+• MOSI connects to Pin 19
+• MISO connects to Pin 21
+• GND connects to Pin 6
+• RST connects to Pin 22
+• 3.3v connects to Pin 1 
+
+By default the Pi has the SPI (Serial Peripheral Interface) disabled, which is a prerequisite for the RFID reader
+to function and therefore, needs to be enabled using rasp iconfig tool as follows:
+
+• Run the command “sudo raspi-config”
+• Select “Interfacing options”
+• Select “P4 SPI” and then, select “Yes”
+• Run the command “sudo reboot” to reboot the Pi
+• Run the command ““lsmod | grep spi” to check.
+• And ensure if spi_bcm2835 is listed.
 
 
 
@@ -88,7 +110,7 @@ When asked, put the first weight on the scale. Then when asked, put the second w
 
 This script upon execution produces a JSON object with product UID, product data and the respective real time weight readings at the SCION [1] client AS node. The script is executed by running the below command as shown.
 
-•	“go run weight_server_full.go -s 19-ffaa:1:161,[192.168.137.185]:30102” 
+•	“go run weight_server_full_rv2.go -s 19-ffaa:1:161,[192.168.137.185]:30102” 
 
 Where “30102” indicates the port number, “[192.168.137.185]” is the detected dynamic IP of the Raspberry Pi [2] and “19-ffaa:1:161” is the SCION [1] AS node installed on the Pi. The complete script can be found in the appendix section.
 
