@@ -207,7 +207,7 @@ time which eliminates the need to do frequent physical inventory inspection and 
   <div align="center>
     <Image src="Images/hardwaresetup.jpg" alt="Nodes" height="300px" width="400px">
    <Image src="Images/visualize.jpg" alt="Nodes" height="300px" width="400px">
-                                                                             </div>
+                                                                             
   </div>
 
 ### CONCLUSION AND FURTHER WORK
