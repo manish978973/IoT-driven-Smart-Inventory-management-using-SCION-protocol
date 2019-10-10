@@ -204,10 +204,10 @@ time which eliminates the need to do frequent physical inventory inspection and 
 <div><h align="center"><b>HARDWARE IMPLEMENTATION AND DATA VISUALIZATION USING NODE-RED</b></h>
    <br>
   <br>
-  <div align="center>
+  <div align="center">
     <Image src="Images/hardwaresetup.jpg" alt="Nodes" height="300px" width="400px">
    <Image src="Images/visualize.jpg" alt="Nodes" height="300px" width="400px">
-                                                                             
+    </div>                                                                         
   </div>
 
 ### CONCLUSION AND FURTHER WORK
